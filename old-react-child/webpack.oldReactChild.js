@@ -9,7 +9,7 @@ const deps = require('./package.json').dependencies;
 
 module.exports = {
     mode: process.env.NODE_ENV,
-    entry: path.join(__dirname, 'src', 'ReactParentIndex.js'),
+    entry: path.join(__dirname, 'src', 'OldReactChildIndex.js'),
     output: {
         path: path.join(__dirname, 'build'),
         filename: 'assets/js/[name].[contenthash].js',
@@ -22,43 +22,23 @@ module.exports = {
         ]
     },
     devServer: {
-        port: 3000,
+        port: 3001,
         contentBase: path.join(__dirname, 'src'),
         hot: true,
         historyApiFallback: {
             index: '/'
-        },
-        proxy: {
-            '/oldReactChild': {
-                target: 'http://localhost:3001',
-                changeOrigin: true,
-                pathRewrite: {
-                    '^/oldReactChild': ''
-                },
-                logLevel: 'debug'
-            },
-            '/newReactChild': {
-                target: 'http://localhost:3002',
-                changeOrigin: true,
-                pathRewrite: {
-                    '^/newReactChild': ''
-                },
-                logLevel: 'debug'
-            }
         }
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: path.join(__dirname, 'src', 'ReactParentIndex.html')
+            template: path.join(__dirname, 'src', 'OldReactChildIndex.html')
         }),
         new ModuleFederationPlugin({
             name: 'reactParent',
             filename: 'remoteEntry.js',
-            remotes: {
-                oldReactChild: 'oldReactChild@/oldReactChild/remoteEntry.js',
-                newReactChild: 'newReactChild@/newReactChild/remoteEntry.js'
+            exposes: {
+                '.': './src/OldReactChildIndex'
             },
-            exposes: {},
             shared: {
                 react: {
                     eager: true,
