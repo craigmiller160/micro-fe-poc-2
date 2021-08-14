@@ -1,0 +1,10 @@
+.ReactParentApp {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.ReactParentApp > .ParentWrapper {
+    border: 1px solid black;
+    margin: 3px;
+}

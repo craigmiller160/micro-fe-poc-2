@@ -1,4 +1,5 @@
 import React from 'react';
+import classes from './ReactParentApp.css';
 
 const supportText = (isSupported) => isSupported ? 'Yes' : 'No';
 
@@ -7,17 +8,18 @@ const ReactParentApp = () => {
     const supportReact168 = !!React.useEffect;
 
     return (
-        <div>
-            <h1>React Parent</h1>
-            <p>Supported Versions</p>
-            <table>
-                <thead>
+        <div className={ classes.ReactParentApp }>
+            <div className={ classes.ParentWrapper }>
+                <h1>React Parent</h1>
+                <p>Supported Versions</p>
+                <table>
+                    <thead>
                     <tr>
                         <th>Version</th>
                         <th>Supported?</th>
                     </tr>
-                </thead>
-                <tbody>
+                    </thead>
+                    <tbody>
                     <tr>
                         <td>16.7</td>
                         <td>{ supportText(supportReact167) }</td>
@@ -26,8 +28,9 @@ const ReactParentApp = () => {
                         <td>16.8</td>
                         <td>{ supportText(supportReact168) }</td>
                     </tr>
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };
