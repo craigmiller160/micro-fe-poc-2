@@ -12,8 +12,7 @@ module.exports = {
     entry: path.join(__dirname, 'src', 'OldReactChildIndex.js'),
     output: {
         path: path.join(__dirname, 'build'),
-        filename: 'assets/js/[name].[contenthash].js',
-        publicPath: '/'
+        filename: 'assets/js/[name].[contenthash].js'
     },
     resolve: {
         modules: [
@@ -34,7 +33,7 @@ module.exports = {
             template: path.join(__dirname, 'src', 'OldReactChildIndex.html')
         }),
         new ModuleFederationPlugin({
-            name: 'reactParent',
+            name: 'oldReactChild',
             filename: 'remoteEntry.js',
             exposes: {
                 '.': './src/OldReactChildIndex'
