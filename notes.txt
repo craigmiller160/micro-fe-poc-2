@@ -10,15 +10,15 @@ Vanilla Parent
 
 
 
-Old Version = React 15
+Old Version = React 16
         How to Test:
-                Prove not 16: ReactDOM.createPortal does not exist
+                Prove not 16.7: React.createContext does not exist
 
-Middle Version = React 16
+Middle Version = React 16.7
         How to Test:
-                Prove at Least 16: ReactDOM.createPortal exists
-                Prove Not 17: React.useEffect does not exists
+                Prove at Least 16.7: React.createContext exists
+                Prove Not 16.8: React.useEffect does not exists
 
-New Version = React 17
+New Version = React 16.8
         How to Test:
-                Prove at Least 17: React.useEffect exists
+                Prove at Least 16.8: React.useEffect exists
