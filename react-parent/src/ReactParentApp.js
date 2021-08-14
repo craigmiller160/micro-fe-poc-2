@@ -1,5 +1,7 @@
 import React from 'react';
 
+const supportText = (isSupported) => isSupported ? 'Yes' : 'No';
+
 const ReactParentApp = () => {
     const supportReact167 = !!React.createContext;
     const supportReact168 = !!React.useEffect;
@@ -7,8 +9,25 @@ const ReactParentApp = () => {
     return (
         <div>
             <h1>React Parent</h1>
-            <p>React 16.7 Support: { supportReact167 }</p>
-            <p>React 16.8 Support: { supportReact168 }</p>
+            <p>Supported Versions</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Version</th>
+                        <th>Supported?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>16.7</td>
+                        <td>{ supportText(supportReact167) }</td>
+                    </tr>
+                    <tr>
+                        <td>16.8</td>
+                        <td>{ supportText(supportReact168) }</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     );
 };
