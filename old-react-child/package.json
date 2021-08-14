@@ -4,8 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack -c webpack.reactParent.js",
-    "start": "cross-env NODE_ENV=development webpack serve -c webpack.reactParent.js"
+    "build": "cross-env NODE_ENV=production webpack -c webpack.oldReactChild.js",
+    "start": "cross-env NODE_ENV=development webpack serve -c webpack.oldReactChild.js"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
