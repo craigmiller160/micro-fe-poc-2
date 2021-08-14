@@ -60,7 +60,6 @@ module.exports = {
             },
             exposes: {},
             shared: {
-                // TODO try ditching eager
                 react: {
                     eager: true,
                     singleton: true,
