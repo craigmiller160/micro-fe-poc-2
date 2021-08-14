@@ -1,17 +1,16 @@
 import React from 'react';
-import classes from './OldReactChild.css';
+import classes from './NewReactChild.css';
 
 const supportText = (isSupported) => isSupported ? 'Yes' : 'No';
 
-class OldReactChild extends React.Component {
-
+class NewReactChildApp extends React.Component {
     render() {
         const supportReact167 = !!React.createContext;
         const supportReact168 = !!React.useEffect;
 
         return (
-            <div className={ classes.OldReactChild }>
-                <h1>Old React Child</h1>
+            <div className={ classes.NewReactChild }>
+                <h1>New React Child</h1>
                 <p>Supported Versions</p>
                 <table>
                     <thead>
@@ -36,4 +35,4 @@ class OldReactChild extends React.Component {
     }
 }
 
-export default OldReactChild;
+export default NewReactChildApp;
