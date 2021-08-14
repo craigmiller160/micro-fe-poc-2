@@ -1,0 +1,24 @@
+Dependency Test
+
+React Parent
+        Load React Child, older version
+        Load React Child, newer version
+
+Vanilla Parent
+        Load React Child, older version
+        Load React Child, newer version
+
+
+
+Old Version = React 15
+        How to Test:
+                Prove not 16: ReactDOM.createPortal does not exist
+
+Middle Version = React 16
+        How to Test:
+                Prove at Least 16: ReactDOM.createPortal exists
+                Prove Not 17: React.useEffect does not exists
+
+New Version = React 17
+        How to Test:
+                Prove at Least 17: React.useEffect exists
