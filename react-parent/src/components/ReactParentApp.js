@@ -13,6 +13,22 @@ class ReactParentApp extends React.Component {
             showOldReactChild: false,
             showNewReactChild: false
         };
+        this.toggleOldReactChild = this.toggleOldReactChild.bind(this);
+        this.toggleNewReactChild = this.toggleNewReactChild.bind(this);
+    }
+
+    toggleOldReactChild() {
+        this.setState((prevState) => ({
+            ...prevState,
+            showOldReactChild: !prevState.showOldReactChild
+        }));
+    }
+
+    toggleNewReactChild() {
+        this.setState((prevState) => ({
+            ...prevState,
+            showNewReactChild: !prevState.showNewReactChild
+        }));
     }
 
     render() {
@@ -42,6 +58,10 @@ class ReactParentApp extends React.Component {
                         </tr>
                         </tbody>
                     </table>
+                </div>
+                <div>
+                    <button onClick={ this.toggleOldReactChild }>Show Old React Child</button>
+                    <button onClick={ this.toggleNewReactChild }>Show New React Child</button>
                 </div>
                 {
                     this.state.showOldReactChild &&
