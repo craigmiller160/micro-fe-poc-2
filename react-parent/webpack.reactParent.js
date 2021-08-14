@@ -28,7 +28,24 @@ module.exports = {
         historyApiFallback: {
             index: '/'
         },
-        proxy: {}
+        proxy: {
+            '/oldReactChild': {
+                target: 'http://localhost:3001',
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/oldReactChild': ''
+                },
+                logLevel: 'debug'
+            },
+            '/newReactChild': {
+                target: 'http://localhost:3001',
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/newReactChild': ''
+                },
+                logLevel: 'debug'
+            }
+        }
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -38,7 +55,8 @@ module.exports = {
             name: 'reactParent',
             filename: 'remoteEntry.js',
             remotes: {
-
+                oldReactChild: 'oldReactChild@/oldReactChild/remoteEntry.js',
+                newReactChild: 'newReactChild@/newReactChild/remoteEntry.js'
             },
             exposes: {},
             shared: {
