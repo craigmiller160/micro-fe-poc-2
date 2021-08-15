@@ -33,10 +33,10 @@ module.exports = {
             template: path.join(__dirname, 'src', 'NewReactChildIndex.html')
         }),
         new ModuleFederationPlugin({
-            name: 'oldReactChild',
+            name: 'newReactChild',
             filename: 'remoteEntry.js',
             exposes: {
-                '.': './src/OldReactChildIndex'
+                '.': './src/NewReactChildIndex'
             },
             shared: {
                 react: {
