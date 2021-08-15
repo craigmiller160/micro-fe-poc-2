@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "start:reactParent": "node reactParentServer",
+    "start:oldReactChild": "node oldReactChildServer",
+    "start:newReactChild": "node newReactChildServer"
+  },
   "dependencies": {
     "express": "^4.17.1",
     "http-proxy-middleware": "^2.0.1"
