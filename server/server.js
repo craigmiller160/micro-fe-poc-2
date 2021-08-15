@@ -20,8 +20,53 @@ const getCacheControl = (requestPath) => {
     }
 };
 
-const startServer = () => {
+const getFilePath = (buildRoot, requestPath) => {
+    switch (requestPath) {
+        case '/': return path.join(buildRoot, 'index.html');
+        default: return path.join(buildRoot, requestPath);
+    }
+};
 
+const createRoute = (app, buildRoot) => {
+    app.get('/**', (req, res) => {
+        console.log(`Received Request: ${req.path}`);
+        const filePath = getFilePath(buildRoot, req.path);
+        if (!fs.existsSync(filePath)) {
+            console.error(`Cannot find file: ${filePath}`);
+            res.status(404);
+            res.set({
+                'Content-Type': 'text/plain'
+            })
+            res.send(`Cannot find file: ${filePath}`);
+            return;
+        }
+
+        console.log(`Returning file: ${filePath}`);
+
+        const extension = path.extname(filePath);
+        const content = fs.readFileSync(filePath, 'utf8');
+
+        res.set({
+            'Content-Type': getContentType(extension),
+            'Cache-Control': getCacheControl(req.path)
+        })
+        res.send(content);
+    });
+};
+
+const startServer = (buildRoot, port, proxyMap = {}) => {
+    const app = express();
+
+    Object.entries(proxyMap)
+        .forEach(([proxyPath, proxyConfig]) => {
+            app.use(proxyPath, createProxyMiddleware(proxyConfig));
+        });
+
+    createRoute(app, buildRoot);
+
+    app.listen(port, () => {
+        console.log(`Listening on port: ${port}`);
+    });
 };
 
 module.exports = startServer;
